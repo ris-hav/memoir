@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/memoir/static/css/main.f37b22e1.css",
+    "main.js": "/memoir/static/js/main.91661ed3.js",
+    "index.html": "/memoir/index.html",
+    "main.f37b22e1.css.map": "/memoir/static/css/main.f37b22e1.css.map",
+    "main.91661ed3.js.map": "/memoir/static/js/main.91661ed3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f37b22e1.css",
+    "static/js/main.91661ed3.js"
+  ]
+}
