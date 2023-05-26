@@ -10,7 +10,7 @@ const List = ({ items,removeItem,handleEdit }) => {
             <p className="title">{title}</p>
             <div className="btn-container">
               <button onClick={()=>handleEdit(id,title)} type="button" className="edit-btn">
-                <FaEdit />
+               <FaEdit />
               </button>
               <button onClick={()=>removeItem(id,title)} type="button" className="delete-btn">
                 <FaTrash />

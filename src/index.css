@@ -147,6 +147,7 @@ p {
   margin: 0 auto;
   max-width: 35rem;
   margin-top: 8rem;
+  
 }
 @media screen and (min-width: 992px) {
   .section-center {
@@ -164,6 +165,7 @@ Grocery List
 ===============
 */
 .section-center {
+  /* background: #DDE6ED; */
   background: var(--clr-white);
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
@@ -252,38 +254,42 @@ Grocery List
   text-transform: capitalize;
 }
 .grocery-item:hover {
-  color: var(--clr-grey-5);
-  background: var(--clr-grey-10);
+  color: var(--clr-grey-2);
+  background: var(--clr-grey-9);
 }
 .grocery-item:hover .title {
-  color: var(--clr-grey-5);
+  color: var(--clr-grey-1);
 }
 .title {
   margin-bottom: 0;
-  color: var(--clr-grey-1);
+  color: var(--clr-grey-3);
   letter-spacing: 2px;
   transition: var(--transition);
 }
 .edit-btn,
 .delete-btn {
   background: transparent;
+ 
   border-color: transparent;
+  border-left-width: 3px;
   cursor: pointer;
-  font-size: 0.7rem;
-  margin: 0 0.15rem;
+  font-size: 0.9rem;
+  margin: 0.4rem 0.65rem;
   transition: var(--transition);
 }
 .edit-btn {
-  color: var(--clr-green-light);
+  color: var(--clr-green-dark);
 }
 .edit-btn:hover {
-  color: var(--clr-green-dark);
+  color: rgb(82, 114, 39);
+  transform: scale(1.2);
 }
 .delete-btn {
   color: var(--clr-red-light);
 }
 .delete-btn:hover {
   color: var(--clr-red-dark);
+  transform: scale(1.1);
 }
 .clear-btn {
   text-transform: capitalize;
@@ -303,4 +309,5 @@ Grocery List
 }
 .clear-btn:hover {
   color: var(--clr-red-dark);
+  transform: scale(1.1);
 }
