@@ -252,6 +252,13 @@ Grocery List
   border-radius: var(--radius);
   text-transform: capitalize;
 }
+.first{
+  display: flex;
+  gap: 10px;
+}
+.strikethrough{
+  text-decoration: line-through;
+}
 .grocery-item:hover {
   color: var(--clr-grey-2);
   background: var(--clr-grey-9);

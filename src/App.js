@@ -75,6 +75,8 @@ function App() {
     // setList(list.filter((item) => item.id !== id));
   };
 
+ 
+
   useEffect(() => {
     localStorage.setItem("list", JSON.stringify(list));
   }, [list]);
@@ -100,7 +102,12 @@ g. eggs"
       </form>
       {list.length > 0 && (
         <div className="grocery-container">
-          <List items={list} removeItem={removeItem} handleEdit={handleEdit} />
+          <List
+            items={list}
+            removeItem={removeItem}
+            handleEdit={handleEdit}
+            
+          />
           <button className="clear-btn" onClick={clearList}>
             clear items
           </button>

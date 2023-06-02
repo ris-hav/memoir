@@ -1,18 +1,63 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
-const List = ({ items,removeItem,handleEdit }) => {
+
+const getLocalStorage1 = () => {
+  let check = localStorage.getItem("check");
+  if (check) {
+    return JSON.parse(localStorage.getItem("check"));
+  } else {
+    return [];
+  }
+};
+
+
+const List = ({ items, removeItem, handleEdit }) => {
+  const [checkedItems, setCheckedItems] = useState(getLocalStorage1());
+
+  // add itemId if not there in checkedItems array,
+  // if there ,remove the itemId from the array
+  const handleCheckboxChange = (itemId) => {
+    if (checkedItems.includes(itemId)) {
+      setCheckedItems(checkedItems.filter((id) => id !== itemId));
+    } else {
+      setCheckedItems([...checkedItems, itemId]);
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("check", JSON.stringify(checkedItems));
+  }, [checkedItems]);
+
   return (
     <div className="grocery-list">
       {items.map((item) => {
         const { id, title } = item;
+        const isChecked = checkedItems.includes(id);
+        const titleClassName = isChecked ? "title strikethrough" : "title";
+
         return (
           <article key={id} className="grocery-item">
-            <p className="title">{title}</p>
+            <div className="first">
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={() => handleCheckboxChange(id)}
+              />
+              <p className={titleClassName}>{title}</p>
+            </div>
             <div className="btn-container">
-              <button onClick={()=>handleEdit(id,title)} type="button" className="edit-btn">
-               <FaEdit />
+              <button
+                onClick={() => handleEdit(id, title)}
+                type="button"
+                className="edit-btn"
+              >
+                <FaEdit />
               </button>
-              <button onClick={()=>removeItem(id,title)} type="button" className="delete-btn">
+              <button
+                onClick={() => removeItem(id, title)}
+                type="button"
+                className="delete-btn"
+              >
                 <FaTrash />
               </button>
             </div>
