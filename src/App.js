@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import List from "./List";
 import Alert from "./Alert";
+import { useGlobalContext } from "./context";
 
 const getLocalStorage = () => {
   let list = localStorage.getItem("list");
@@ -57,10 +58,12 @@ function App() {
   const showAlert = (show, type, msg, dur) => {
     setAlert({ show: show, type: type, msg: msg, dur: dur });
   };
-
+  const { setCheckedItems } = useGlobalContext();
   const clearList = () => {
     showAlert(true, "danger", "empty list", "");
     setList([]);
+    setCheckedItems([]);
+    setCount(0);
   };
 
   const removeItem = (id, title) => {
@@ -74,8 +77,6 @@ function App() {
     setEditID(id);
     // setList(list.filter((item) => item.id !== id));
   };
-
- 
 
   useEffect(() => {
     localStorage.setItem("list", JSON.stringify(list));
@@ -102,12 +103,7 @@ g. eggs"
       </form>
       {list.length > 0 && (
         <div className="grocery-container">
-          <List
-            items={list}
-            removeItem={removeItem}
-            handleEdit={handleEdit}
-            
-          />
+          <List items={list} removeItem={removeItem} handleEdit={handleEdit} />
           <button className="clear-btn" onClick={clearList}>
             clear items
           </button>

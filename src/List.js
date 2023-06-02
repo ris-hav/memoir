@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { useGlobalContext } from './context';
 
 const getLocalStorage1 = () => {
   let check = localStorage.getItem("check");
@@ -12,7 +13,7 @@ const getLocalStorage1 = () => {
 
 
 const List = ({ items, removeItem, handleEdit }) => {
-  const [checkedItems, setCheckedItems] = useState(getLocalStorage1());
+  const { checkedItems, setCheckedItems } = useGlobalContext();
 
   // add itemId if not there in checkedItems array,
   // if there ,remove the itemId from the array
